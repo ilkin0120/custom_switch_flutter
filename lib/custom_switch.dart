@@ -32,9 +32,6 @@ class CustomSwitch extends StatelessWidget {
   /// Height of the switch.
   final double height;
 
-  /// Animation duration for the switch toggle.
-  final Duration thumbAnimationDuration;
-
   /// Thumb color when the switch is disabled.
   final Color thumbDisableColor;
 
@@ -55,7 +52,6 @@ class CustomSwitch extends StatelessWidget {
     required this.value,
     required this.onToggle,
     this.isEnabled = true,
-    this.thumbAnimationDuration = const Duration(milliseconds: 300),
     this.backgroundDisableColor = const Color(0xFFF1F1F1),
     this.backgroundOnColor = const Color(0xFF0D6BE9),
     this.backgroundOffColor = const Color(0xFFE2E2E2),
@@ -82,7 +78,7 @@ class CustomSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         child: AnimatedContainer(
-          duration: thumbAnimationDuration,
+          duration: const Duration(milliseconds: 300),
           curve: Curves.decelerate,
           width: width,
           height: height,
@@ -91,7 +87,7 @@ class CustomSwitch extends StatelessWidget {
               color: _getBackgroundColor(),
               border: backgroundBorder),
           child: AnimatedAlign(
-            duration: thumbAnimationDuration,
+            duration: const Duration(milliseconds: 300),
             alignment: value ? Alignment.centerRight : Alignment.centerLeft,
             curve: Curves.decelerate,
             child: Padding(
